@@ -7,10 +7,14 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>GWE Seed App</title>
 
+		<!-- This page uses google charts and jquery libraries linked in the below code -->
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 		<script type="text/javascript" src="https://www.google.com/jsapi?autoload={'modules':[{'name':'visualization','version':'1.1','packages':['corechart']}]}"></script>
+
+		<!-- This is the link to the customizable javascript that pulls in GWE data-->
 		<script type="text/javascript" src="GWE.js"></script>
 
+		<!--  This file controls much of the look of the page-->
 		<link href="style.css" rel="stylesheet" title="Default Style">
 	</head>
 
@@ -24,7 +28,7 @@
 		  <li><a type ="button" onclick="showDeviceInfo()">Device Info</a></li>
 		  <li><a type ="button" onclick="showEngineReport()">Engine Report</a></li>
 		  <li><a type ="button" onclick="showUsageReport()">Usage Report</a></li>
-		  <li><a type ="button" onclick="showDataView()">Data View</a></li>
+		  <li><a type ="button" onclick="showDataView();drawChart();">Data View</a></li>
 		</ul>
 
 		<div class="container" id="device_info">
@@ -64,7 +68,7 @@
 
 	<script type="text/javascript">
 	<!--
-		var timer = setInterval(drawChart, 3000);
+		var timer = setInterval(drawChart, 10000);
 
 		//Update all the data
 		drawChart();

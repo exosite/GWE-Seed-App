@@ -1,9 +1,11 @@
+//Exosite GWE
+//Global Variables
 //Base URL should be changed to your URL
 var base_url = "https://thegwe.apps.exosite.io"
 
 //Test Data graph information
 var test_data = [];
-test_data.push(['Time', 'Data']);
+
 
 //Get the data from device info and assign it to the id of the HTML Elements
 function updateDeviceInfo()
@@ -16,8 +18,10 @@ function updateDeviceInfo()
 			type: "GET"
 		})	
 		.then(response => {
+			//Parse the response data
 			var data = JSON.parse(response[0].value);
 
+			console.log(data);
 			//Format for display
 			var uname = "<pre>" + data.uname + "</pre>";
 			var disk_free = "<pre>" + data.df + "</pre>";
@@ -37,6 +41,7 @@ function updateDeviceInfo()
 	});
 }
 
+//Gets the data from the Engine Report and updates HTML elments
 function updateEngineReport()
 {
 	var url = base_url.concat("/engine_report");
@@ -48,7 +53,9 @@ function updateEngineReport()
 		})	
 		.then(response => {
 
+			//Parse the response data
 			var data = JSON.parse(response[0].value);
+			console.log(data);
 			var data_array = data.apps;
 
 			//var to hold name values
@@ -92,6 +99,7 @@ function updateEngineReport()
 	});
 }
 
+//Gets the data from the Usage Report and updates HTML elments
 function updateUsageReport()
 {
 		var url = base_url.concat("/usage_report");
@@ -103,7 +111,9 @@ function updateUsageReport()
 		})	
 		.then(response => {
 
+			//Parse the response data
 			var data = JSON.parse(response[0].value);
+			console.log(data);
 
 			//var to hold name values
 			var keys = [];
@@ -153,15 +163,12 @@ function updateUsageReport()
 			}
 
 			string_to_write += "</table>";
-			console.log(string_to_write);
 
 			document.getElementById("usage").innerHTML = string_to_write;
 			
 		})
 	});
 }
-
-
 
 //Grabs the test data from Murano to update the graph
 function updateGraph()
@@ -175,17 +182,13 @@ function updateGraph()
 		})	
 		.then(response => {
 
-			var current_time = new Date();
-
-			//Create a datapoint from the data
-			var point = [current_time.toString(), parseInt(response[0].value)];
-
-			test_data.push(point);
-
-			//Removes the first elements when the array becomes size 50
-			if(test_data.length > 50){
-				test_data.splice(1,1);
+			test_data = [];
+			test_data.push(['Time', 'Data']);
+			for(i = 0; i < response[0].series[0].values.length; ++i){
+				test_data.push(response[0].series[0].values[i]);
 			}
+
+			console.log(test_data);
 
 		})
 	});
