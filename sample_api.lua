@@ -19,7 +19,7 @@ response.message = {result}
 response.headers["x-my-custom-header"] = "my header content"
 
 --#ENDPOINT GET /test_data
-local query_string =  "select test from raw_data limit 100"
+local query_string =  "select test from raw_data order by time desc limit 100"
 local data = Timeseries.query({
   q = query_string
 })

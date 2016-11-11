@@ -114,7 +114,7 @@ function updateUsageReport()
 			//Parse the response data
 			var data = JSON.parse(response[0].value);
 			console.log(data);
-
+			console.log(JSON.stringify(data));
 			//var to hold name values
 			var keys = [];
 			//var to hold key values
@@ -182,7 +182,7 @@ function updateGraph()
 		})	
 		.then(response => {
 
-			console.log(response);
+			
 			test_data = [];
 			test_data.push(['Time', 'Data']);
 			for(i = 0; i < response[0].series[0].values.length; ++i){
