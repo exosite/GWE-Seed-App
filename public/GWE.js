@@ -127,7 +127,7 @@ function updateUsageReport()
 				var line = data[key1];
 
 				//Check to make sure the interface is used
-				if(line.top_consumer != ""){
+				//if(line.top_consumer != ""){
 					for(key2 in line){
 						
 						var line2 = line[key2];
@@ -147,7 +147,7 @@ function updateUsageReport()
 							}
 						}
 					}
-				}
+				//}
 			}
 
 			//Push values to document
@@ -182,6 +182,7 @@ function updateGraph()
 		})	
 		.then(response => {
 
+			console.log(response);
 			test_data = [];
 			test_data.push(['Time', 'Data']);
 			for(i = 0; i < response[0].series[0].values.length; ++i){
