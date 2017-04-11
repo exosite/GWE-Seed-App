@@ -1,3 +1,4 @@
+--#EVENT device datapoint
 local hack = to_json(data)
 local rdata = from_json(hack)
 
