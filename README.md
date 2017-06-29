@@ -46,7 +46,7 @@ An example solution displaying all the telemetric data from Gateway Engine as we
 
 ## Configure The Gateway 
 
-1. Install GWE on your GateWay following the documentation https://gateway-engine.exosite.io/gateway-engine/README.html
+1. Install GWE on your Gateway following the documentation https://gateway-engine.exosite.io/getting_started.html
 
 2. Set the update interval to post data every minute.
 
